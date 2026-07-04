@@ -1,0 +1,89 @@
+{"topic":"overfitting","text":"Overfitting happens when a model learns the training data too closely, including noise and accidental patterns, so its performance drops on new unseen data.","source":"curated_core"}
+{"topic":"underfitting","text":"Underfitting happens when a model is too simple to capture the main structure in the data, so it performs poorly on both training and test examples.","source":"curated_core"}
+{"topic":"gradient descent","text":"Gradient descent is an optimization method that updates model parameters in the direction that most reduces error, usually by taking many small steps downhill on the loss surface.","source":"curated_core"}
+{"topic":"learning rate","text":"The learning rate controls how large each optimization step is during training. Too high can make training unstable, and too low can make learning very slow.","source":"curated_core"}
+{"topic":"regularization","text":"Regularization reduces overfitting by discouraging overly complex models. Common methods include weight decay, dropout, and early stopping.","source":"curated_core"}
+{"topic":"dropout","text":"Dropout is a regularization technique that randomly disables some neurons during training so the network does not depend too heavily on any one path.","source":"curated_core"}
+{"topic":"train validation test split","text":"A train, validation, and test split separates data for learning, model tuning, and final evaluation so you can estimate generalization more honestly.","source":"curated_core"}
+{"topic":"cross validation","text":"Cross-validation estimates model performance by training and evaluating across multiple data splits instead of relying on one single split.","source":"curated_core"}
+{"topic":"precision recall","text":"Precision measures how many predicted positives were actually correct, while recall measures how many real positives the model successfully found.","source":"curated_core"}
+{"topic":"f1 score","text":"The F1 score combines precision and recall into one metric by taking their harmonic mean, which is useful when classes are imbalanced.","source":"curated_core"}
+{"topic":"confusion matrix","text":"A confusion matrix counts true positives, true negatives, false positives, and false negatives so you can see exactly what kinds of mistakes a classifier makes.","source":"curated_core"}
+{"topic":"transformer","text":"A transformer is a neural network architecture that processes token relationships with attention, allowing it to model long-range dependencies efficiently.","source":"curated_core"}
+{"topic":"attention","text":"Attention lets a model weigh which tokens are most relevant to each other for the current prediction instead of treating every token equally.","source":"curated_core"}
+{"topic":"tokenization","text":"Tokenization converts raw text into smaller units such as words, subwords, or symbols so a language model can process them numerically.","source":"curated_core"}
+{"topic":"embedding","text":"An embedding maps tokens into dense numeric vectors so the model can represent semantic similarity and learned structure in continuous space.","source":"curated_core"}
+{"topic":"fine tuning","text":"Fine-tuning starts from a pretrained model and updates it on a narrower dataset so it becomes better at a specific domain or task.","source":"curated_core"}
+{"topic":"retrieval augmented generation","text":"Retrieval-augmented generation combines a language model with a search or memory step so responses can be grounded in external evidence instead of only internal weights.","source":"curated_core"}
+{"topic":"hallucination","text":"A hallucination is a confident-sounding model output that is unsupported, fabricated, or inconsistent with available evidence.","source":"curated_core"}
+{"topic":"python variables","text":"A Python variable stores a reference to a value. You create one by assigning a value with the equals sign, such as count = 3.","source":"curated_core"}
+{"topic":"python loops","text":"Python loops repeat work. A for loop iterates over items in a sequence, while a while loop repeats until a condition becomes false.","source":"curated_core"}
+{"topic":"python functions","text":"A Python function packages reusable logic under a name. It can accept inputs, perform work, and return a result.","source":"curated_core"}
+{"topic":"python dictionaries","text":"A Python dictionary stores key-value pairs and is useful when you need fast lookup by name, label, or identifier.","source":"curated_core"}
+{"topic":"python lists","text":"A Python list is an ordered mutable collection. It is useful for storing sequences of items that may change over time.","source":"curated_core"}
+{"topic":"debugging","text":"Debugging means narrowing down why a program behaves incorrectly by reproducing the issue, inspecting state, and testing small hypotheses until the root cause is clear.","source":"curated_core"}
+{"topic":"unit testing","text":"Unit tests check small pieces of code in isolation so regressions are caught early and behavior stays stable during refactoring.","source":"curated_core"}
+{"topic":"big o","text":"Big-O notation describes how runtime or memory usage grows as input size increases, helping compare algorithmic efficiency.","source":"curated_core"}
+{"topic":"binary search","text":"Binary search finds a target in a sorted list by repeatedly halving the search range, giving logarithmic time complexity.","source":"curated_core"}
+{"topic":"backpropagation","text":"Backpropagation computes how much each model parameter contributed to prediction error so gradient-based optimization can update the weights.","source":"curated_core"}
+{"topic":"loss function","text":"A loss function measures how wrong a model prediction is. Training tries to reduce this value over time.","source":"curated_core"}
+{"topic":"generalization","text":"Generalization is a model's ability to perform well on new unseen examples instead of only the training data it already observed.","source":"curated_core"}
+{"topic":"bias variance tradeoff","text":"The bias-variance tradeoff describes balancing underfitting and overfitting. High bias misses structure, while high variance overreacts to noise.","source":"curated_core"}
+{"topic":"data leakage","text":"Data leakage happens when information from validation or test data accidentally influences training, making evaluation look better than real performance.","source":"curated_core"}
+{"topic":"early stopping","text":"Early stopping halts training when validation performance stops improving, which often prevents overfitting and saves compute.","source":"curated_core"}
+{"topic":"weight decay","text":"Weight decay adds a penalty on large parameter values during optimization, encouraging simpler models that generalize better.","source":"curated_core"}
+{"topic":"adam optimizer","text":"Adam combines momentum and adaptive learning rates so training can converge faster and more stably on many deep learning tasks.","source":"curated_core"}
+{"topic":"sgd optimizer","text":"Stochastic gradient descent updates parameters using small random batches. It is simple, robust, and often works very well with tuned schedules.","source":"curated_core"}
+{"topic":"learning rate schedule","text":"A learning rate schedule changes step size during training, often starting larger and decaying over time for better convergence.","source":"curated_core"}
+{"topic":"batch size","text":"Batch size is the number of samples used per gradient update. Larger batches are more stable; smaller batches can generalize better and use less memory.","source":"curated_core"}
+{"topic":"normalization","text":"Normalization methods like batch norm or layer norm stabilize neural network training by keeping intermediate activations in useful numeric ranges.","source":"curated_core"}
+{"topic":"residual connections","text":"Residual connections add skip paths that help gradients flow through deep networks, making optimization easier and reducing degradation.","source":"curated_core"}
+{"topic":"positional encoding","text":"Transformers need positional information because attention alone is order-agnostic; positional encodings inject token order into representations.","source":"curated_core"}
+{"topic":"self attention complexity","text":"Standard self-attention has quadratic complexity with sequence length, which can become expensive for very long contexts.","source":"curated_core"}
+{"topic":"prompt engineering","text":"Prompt engineering means structuring instructions, context, and examples so a model produces more reliable outputs without weight updates.","source":"curated_core"}
+{"topic":"few shot learning","text":"Few-shot learning provides a handful of examples in the prompt so the model can infer the desired format or behavior.","source":"curated_core"}
+{"topic":"chain of thought","text":"Chain-of-thought prompting encourages explicit intermediate reasoning steps, which can improve performance on complex tasks.","source":"curated_core"}
+{"topic":"model calibration","text":"Calibration measures whether confidence values match true correctness likelihood, helping users trust uncertainty estimates.","source":"curated_core"}
+{"topic":"roc auc","text":"ROC-AUC summarizes a classifier's ranking quality across thresholds by comparing true-positive and false-positive rates.","source":"curated_core"}
+{"topic":"class imbalance","text":"Class imbalance occurs when one class is much rarer than others, requiring metrics and training strategies beyond simple accuracy.","source":"curated_core"}
+{"topic":"data augmentation","text":"Data augmentation creates varied training samples from existing data to improve robustness and reduce overfitting.","source":"curated_core"}
+{"topic":"embedding similarity","text":"Embedding similarity uses vector distance to compare semantic meaning between texts, enabling retrieval and clustering.","source":"curated_core"}
+{"topic":"vector database","text":"A vector database stores embeddings and supports nearest-neighbor search so systems can retrieve relevant context efficiently.","source":"curated_core"}
+{"topic":"rag pipeline","text":"A RAG pipeline usually has indexing, retrieval, reranking, and generation stages to produce grounded, source-aware answers.","source":"curated_core"}
+{"topic":"hallucination mitigation","text":"Hallucinations are reduced by grounding with retrieval, asking for citations, and refusing uncertain claims when evidence is weak.","source":"curated_core"}
+{"topic":"python virtual environment","text":"A Python virtual environment isolates dependencies for a project so package versions stay stable and reproducible.","source":"curated_core"}
+{"topic":"python exceptions","text":"Exceptions represent runtime errors. Use try/except blocks to handle failures gracefully and keep programs robust.","source":"curated_core"}
+{"topic":"python list comprehension","text":"List comprehensions create lists concisely by combining iteration and optional filtering in one readable expression.","source":"curated_core"}
+{"topic":"python modules","text":"A Python module is a file of reusable code that can be imported by other scripts, improving organization and maintainability.","source":"curated_core"}
+{"topic":"python package","text":"A package groups related Python modules, usually in a directory, so larger projects can be structured cleanly.","source":"curated_core"}
+{"topic":"git branching","text":"Git branches let you develop features independently from the main branch, making collaboration and rollback safer.","source":"curated_core"}
+{"topic":"api design","text":"Good API design uses clear naming, predictable behavior, and explicit error handling so users can integrate quickly and safely.","source":"curated_core"}
+{"topic":"unit test example","text":"Example: if a function should return 5 for inputs 2 and 3, write a test that asserts add(2,3) == 5 and also checks edge cases.","source":"example_bank"}
+{"topic":"overfitting example","text":"Example: a model gets 99 percent training accuracy but only 72 percent test accuracy; this gap is a classic sign of overfitting.","source":"example_bank"}
+{"topic":"gradient descent example","text":"Example: if prediction error is high, gradient descent nudges weights in the direction that lowers error, then repeats for many batches.","source":"example_bank"}
+{"topic":"precision recall example","text":"Example: in spam detection, precision asks what fraction of flagged emails are truly spam, while recall asks what fraction of all spam was caught.","source":"example_bank"}
+{"topic":"binary search example","text":"Example: finding 42 in a sorted array by repeatedly checking middle values cuts search time from linear to logarithmic.","source":"example_bank"}
+{"topic":"rag example","text":"Example: a support bot retrieves the latest policy document section and uses it as evidence before answering a refund question.","source":"example_bank"}
+{"topic":"windows troubleshooting baseline","text":"A reliable troubleshooting baseline is: reproduce the issue, inspect logs and error text, isolate one variable, test one fix, then verify and document the result.","source":"curated_core"}
+{"topic":"safe command execution","text":"Safe command execution starts with read-only diagnostics, explicit user confirmation for state changes, and clear rollback checkpoints before any risky action.","source":"curated_core"}
+{"topic":"rollback strategy","text":"A rollback strategy defines what to restore, which checkpoints to use, and how to verify recovery before continuing with further changes.","source":"curated_core"}
+{"topic":"incident triage","text":"Incident triage prioritizes severity, scope, and user impact, then targets the smallest reversible action that can stabilize the system first.","source":"curated_core"}
+{"topic":"log analysis","text":"Effective log analysis filters by time window, component, and error signatures to identify root-cause patterns instead of isolated noise lines.","source":"curated_core"}
+{"topic":"root cause analysis","text":"Root cause analysis links symptoms to a reproducible mechanism and verifies the fix by proving the failure no longer occurs under the same conditions.","source":"curated_core"}
+{"topic":"change management","text":"Good change management uses small increments, checkpointing, validation after each change, and fast rollback when metrics regress.","source":"curated_core"}
+{"topic":"powershell basics","text":"PowerShell is object-based, so commands often pass structured data through pipelines instead of plain text, which improves reliability of automation.","source":"curated_core"}
+{"topic":"file system safety","text":"Before modifying files, check path scope, create backups, and avoid recursive destructive operations unless absolutely necessary and confirmed.","source":"curated_core"}
+{"topic":"performance triage","text":"Performance triage starts by measuring baseline latency and resource usage, then profiling bottlenecks before applying optimizations.","source":"curated_core"}
+{"topic":"memory leak debugging","text":"Memory leak debugging compares memory growth over time, identifies unreleased objects, and validates that memory stabilizes after fixes.","source":"curated_core"}
+{"topic":"network diagnosis","text":"Network diagnosis checks DNS resolution, routing reachability, service ports, and latency patterns to separate local from remote failures.","source":"curated_core"}
+{"topic":"dependency hygiene","text":"Dependency hygiene means pinning versions, auditing updates, and testing compatibility in staging before promoting changes to production workflows.","source":"curated_core"}
+{"topic":"configuration drift","text":"Configuration drift occurs when environments diverge over time; prevent it with versioned configs and repeatable setup scripts.","source":"curated_core"}
+{"topic":"checkpoint verification","text":"Checkpoint verification confirms model files load, outputs are sane on known prompts, and regression scores stay above release thresholds.","source":"curated_core"}
+{"topic":"regression testing strategy","text":"A strong regression strategy includes fixed benchmark prompts, multi-turn dialogue tests, and acceptance gates for coherence and safety.","source":"curated_core"}
+{"topic":"assistant guardrails","text":"Assistant guardrails should separate advisory actions from execution actions, requiring explicit readiness and policy checks before control operations.","source":"curated_core"}
+{"topic":"task planning loop","text":"A robust task loop is plan, execute small step, verify outcome, reflect on failure modes, and update the next plan iteration.","source":"curated_core"}
+{"topic":"conversation memory quality","text":"Conversation memory quality improves when low-signal chatter is filtered and high-signal questions, corrections, and outcomes are weighted higher.","source":"curated_core"}
+{"topic":"confidence reporting","text":"Confidence reporting should reflect evidence quality and uncertainty rather than sounding absolute when retrieval support is weak.","source":"curated_core"}
+{"topic":"example troubleshooting flow","text":"Example flow: user reports app crash, assistant gathers error text and logs, identifies dependency mismatch, applies targeted fix, and confirms app startup.","source":"example_bank"}
+{"topic":"example rollback flow","text":"Example flow: after a config change increases errors, assistant restores previous config snapshot, restarts service, and validates error rate returns to baseline.","source":"example_bank"}
+{"topic":"example safe automation","text":"Example flow: assistant lists files and checks status first, asks confirmation before edits, applies one small change, then verifies expected output.","source":"example_bank"}

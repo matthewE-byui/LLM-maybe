@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "description": "Manifest of question lookup banks loaded by JARVIS.",
+  "banks": [
+    {
+      "name": "core-general",
+      "path": "data/question_lookup_bank.jsonl",
+      "enabled": true,
+      "notes": "Baseline high-signal QA bank"
+    },
+    {
+      "name": "coding-python-core",
+      "path": "data/banks/coding_python_core.jsonl",
+      "enabled": true,
+      "notes": "Python basics, coding patterns"
+    },
+    {
+      "name": "coding-algorithms",
+      "path": "data/banks/coding_algorithms.jsonl",
+      "enabled": true,
+      "notes": "Data structures and algorithm reasoning"
+    },
+    {
+      "name": "coding-debug-test",
+      "path": "data/banks/coding_debug_testing.jsonl",
+      "enabled": true,
+      "notes": "Debugging, testing, reliability"
+    },
+    {
+      "name": "ml-transformers",
+      "path": "data/banks/ml_transformers_core.jsonl",
+      "enabled": true,
+      "notes": "ML and transformer focused QA"
+    },
+    {
+      "name": "systems-pc-assistant",
+      "path": "data/banks/systems_pc_assistant.jsonl",
+      "enabled": true,
+      "notes": "Troubleshooting and safe automation"
+    }
+  ]
+}

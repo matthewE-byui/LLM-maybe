@@ -1,0 +1,47 @@
+# Python caches
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+.venv/
+
+# Model checkpoints and large artifacts
+checkpoints/
+models/
+*.pt
+*.bin
+*.safetensors
+*.ckpt
+*.onnx
+
+# Training outputs and logs
+logs/
+eval_reports/
+*.log
+
+# Local runtime state (keep project code clean for class repo)
+conversation_memory.json
+vector_memory.json
+goals.json
+topic_queue.json
+topic_scores.json
+feedback_stats.json
+reflection_log.json
+mind_state.json
+layered_memory.json
+executor_history.json
+large_training_ledger.jsonl
+growth_corpus.txt
+
+# Datasets and archives
+../ChatGPT data 2024-26/
+*.zip
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

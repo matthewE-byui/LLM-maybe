@@ -1,0 +1,347 @@
+[
+  {
+    "id": "gradient_descent_explanation",
+    "turns": [
+      {
+        "user": "explain gradient descent simply",
+        "required_terms": [
+          "gradient",
+          "descent"
+        ],
+        "forbidden_terms": [
+          "www",
+          "http"
+        ]
+      },
+      {
+        "user": "give me a simple example",
+        "required_terms": [
+          "example"
+        ],
+        "forbidden_terms": [
+          "www",
+          "http"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "python_beginner_path",
+    "turns": [
+      {
+        "user": "i want to learn python where should i start",
+        "required_terms": [
+          "python",
+          "basics"
+        ],
+        "forbidden_terms": [
+          "www",
+          "http",
+          "implementation path"
+        ]
+      },
+      {
+        "user": "what should i build first",
+        "required_terms": [
+          "project"
+        ],
+        "forbidden_terms": [
+          "www",
+          "http"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "transformer_basics",
+    "turns": [
+      {
+        "user": "what is a transformer in ai",
+        "required_terms": [
+          "transformer",
+          "attention"
+        ],
+        "forbidden_terms": [
+          "www",
+          "http"
+        ]
+      },
+      {
+        "user": "why is attention useful",
+        "required_terms": [
+          "attention"
+        ],
+        "forbidden_terms": [
+          "www",
+          "http"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "overfitting_fix_path",
+    "turns": [
+      {
+        "user": "what is overfitting in machine learning",
+        "required_terms": [
+          "overfitting",
+          "confidence"
+        ],
+        "forbidden_terms": [
+          "www",
+          "http"
+        ]
+      },
+      {
+        "user": "ok so how do i fix it quickly",
+        "required_terms": [
+          "regularization",
+          "early stopping",
+          "confidence"
+        ],
+        "forbidden_terms": [
+          "www",
+          "http",
+          "bad decision"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "learning_rate_followup",
+    "turns": [
+      {
+        "user": "explain gradient descent simply",
+        "required_terms": [
+          "gradient",
+          "confidence"
+        ],
+        "forbidden_terms": [
+          "www",
+          "http"
+        ]
+      },
+      {
+        "user": "how do i choose a learning rate",
+        "required_terms": [
+          "learning rate",
+          "confidence"
+        ],
+        "forbidden_terms": [
+          "www",
+          "http"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "python_next_steps",
+    "turns": [
+      {
+        "user": "i want to learn python where should i start",
+        "required_terms": [
+          "python",
+          "confidence"
+        ],
+        "forbidden_terms": [
+          "www",
+          "http"
+        ]
+      },
+      {
+        "user": "what should i build next",
+        "required_terms": [
+          "project",
+          "confidence"
+        ],
+        "forbidden_terms": [
+          "www",
+          "http"
+        ]
+      },
+      {
+        "user": "how long should that take",
+        "required_terms": [
+          "days",
+          "confidence"
+        ],
+        "forbidden_terms": [
+          "www",
+          "http"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "metric_tradeoff_followup",
+    "turns": [
+      {
+        "user": "what is precision and recall",
+        "required_terms": [
+          "precision",
+          "recall",
+          "confidence"
+        ],
+        "forbidden_terms": [
+          "www",
+          "http"
+        ]
+      },
+      {
+        "user": "which one should i optimize first",
+        "required_terms": [
+          "precision",
+          "recall",
+          "confidence"
+        ],
+        "forbidden_terms": [
+          "www",
+          "http"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rag_usage_followup",
+    "turns": [
+      {
+        "user": "what is retrieval augmented generation",
+        "required_terms": [
+          "retrieval",
+          "confidence"
+        ],
+        "forbidden_terms": [
+          "www",
+          "http"
+        ]
+      },
+      {
+        "user": "when should i use rag",
+        "required_terms": [
+          "ground",
+          "confidence"
+        ],
+        "forbidden_terms": [
+          "www",
+          "http"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "weekly_followup_003",
+    "turns": [
+      {
+        "user": "what is a transformer in ai",
+        "required_terms": [
+          "transformer",
+          "architecture"
+        ],
+        "forbidden_terms": [
+          "www",
+          "http"
+        ]
+      },
+      {
+        "user": "why is attention useful",
+        "required_terms": [
+          "transformer",
+          "architecture",
+          "attention",
+          "confidence"
+        ],
+        "forbidden_terms": [
+          "www",
+          "http"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "weekly_followup_005",
+    "turns": [
+      {
+        "user": "what is overfitting in machine learning",
+        "required_terms": [
+          "data",
+          "overfitting"
+        ],
+        "forbidden_terms": [
+          "www",
+          "http"
+        ]
+      },
+      {
+        "user": "ok so how do i fix it quickly",
+        "required_terms": [
+          "overfitting",
+          "data",
+          "learning",
+          "confidence"
+        ],
+        "forbidden_terms": [
+          "www",
+          "http"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "weekly_followup_007",
+    "turns": [
+      {
+        "user": "explain gradient descent simply",
+        "required_terms": [
+          "descent",
+          "gradient"
+        ],
+        "forbidden_terms": [
+          "www",
+          "http"
+        ]
+      },
+      {
+        "user": "how do i choose a learning rate",
+        "required_terms": [
+          "descent",
+          "gradient",
+          "small",
+          "confidence"
+        ],
+        "forbidden_terms": [
+          "www",
+          "http"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "weekly_followup_010",
+    "turns": [
+      {
+        "user": "what should i build next",
+        "required_terms": [
+          "after",
+          "bank"
+        ],
+        "forbidden_terms": [
+          "www",
+          "http"
+        ]
+      },
+      {
+        "user": "how long should that take",
+        "required_terms": [
+          "build",
+          "after",
+          "bank",
+          "confidence"
+        ],
+        "forbidden_terms": [
+          "www",
+          "http"
+        ]
+      }
+    ]
+  }
+]
