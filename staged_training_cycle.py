@@ -10,6 +10,7 @@ import fine_tune_utils
 from build_synthetic_curriculum import build_task
 from dialogue_regression import DialogueRegression
 from inference import LLMChat
+from model_paths import resolve_active_checkpoint
 from transformers import AutoTokenizer
 
 
@@ -143,7 +144,7 @@ def train_stage(model, tokenizer, device, checkpoint_path, text, label, num_step
 
 def main():
     parser = argparse.ArgumentParser(description="Run staged training and compare transcripts")
-    parser.add_argument("--checkpoint", default="checkpoints/best_model.pt")
+    parser.add_argument("--checkpoint", default=resolve_active_checkpoint())
     parser.add_argument("--chatgpt-data-folder", default="..\\ChatGPT data 2024-26")
     parser.add_argument("--curated-path", default="data/curated_knowledge.jsonl")
     parser.add_argument("--report", default="eval_reports/staged_training_report.json")

@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "updated_at": "2026-07-08T20:13:44.710267",
+  "identity": "I am JARVIS, a local-first assistant that stays on this PC.",
+  "focus": [
+    "citations",
+    "confidence",
+    "data",
+    "overfitting",
+    "gradient",
+    "descent"
+  ],
+  "recent_topics": [
+    "learning",
+    "machine",
+    "descent",
+    "explain"
+  ],
+  "goals": [
+    "#1 Ship cross-device assistant API"
+  ],
+  "preferences": [],
+  "summary": "I am JARVIS, a local-first assistant that stays on this PC. I am a local assistant focused on learning, machine, descent, explain. Current goals: #1 Ship cross-device assistant API. User preferences: none."
+}

@@ -6,6 +6,8 @@ from transformers import AutoTokenizer
 from model import TransformerLM
 from config import MODEL_CONFIG
 from fine_tune_utils import fine_tune_on_text
+from model_paths import resolve_active_checkpoint
+from quality_utils import normalize_text, text_quality_score, lexical_overlap_score
 
 
 class LLMChat:
@@ -19,6 +21,7 @@ class LLMChat:
         print("Loading model...")
         self.model = TransformerLM(MODEL_CONFIG)
         
+        checkpoint_path = checkpoint_path or resolve_active_checkpoint()
         if checkpoint_path and os.path.exists(checkpoint_path):
             print(f"Loading checkpoint from {checkpoint_path}")
             try:
@@ -45,6 +48,24 @@ class LLMChat:
         self.auto_learn = auto_learn
         self.learning_count = 0
         self.learning_threshold = 1  # Fine-tune every N web searches
+
+    def _assistant_prefix(self):
+        return (
+            "You are a helpful, accurate assistant. "
+            "Answer directly, stay concise, and do not repeat the prompt. "
+            "If the prompt is ambiguous, ask one focused clarifying question instead of guessing.\n\n"
+        )
+
+    def _score_completion(self, prompt, completion):
+        text = normalize_text(completion)
+        if not text:
+            return 0.0
+        score = text_quality_score(text)
+        score += 0.25 * min(1.0, len(text) / 220.0)
+        score += 0.25 * lexical_overlap_score(prompt, text)
+        if len(text.split()) < 6:
+            score *= 0.7
+        return max(0.0, min(1.0, score))
     
     def generate(self, prompt, max_length=200, temperature=0.7, top_k=50):
         """Generate text completion from a prompt with knowledge memory"""
@@ -52,6 +73,8 @@ class LLMChat:
         if self.knowledge:
             mem_text = "\n".join(self.knowledge[-3:])  # keep last 3 lookups
             prompt = mem_text + "\n" + prompt
+
+        prompt = self._assistant_prefix() + prompt
         
         # Tokenize prompt manually (don't use return_tensors)
         encoding = self.tokenizer(prompt, return_tensors=None)
@@ -61,19 +84,28 @@ class LLMChat:
             input_ids = input_ids.unsqueeze(0)
         input_ids = input_ids.to(self.device)
         
-        # Generate
-        with torch.no_grad():
-            output_ids = self.model.generate(
-                input_ids,
-                max_new_tokens=max_length,
-                temperature=temperature,
-                top_k=top_k
-            )
-        
-        # Decode
-        decoded_ids = output_ids[0].cpu().tolist()
-        completion = self.tokenizer.decode(decoded_ids, skip_special_tokens=True)
-        return completion
+        candidates = []
+        for candidate_temperature in (max(0.2, temperature * 0.85), temperature, min(0.95, temperature * 1.1)):
+            with torch.no_grad():
+                output_ids = self.model.generate(
+                    input_ids,
+                    max_new_tokens=max_length,
+                    temperature=candidate_temperature,
+                    top_k=top_k
+                )
+
+            decoded_ids = output_ids[0].cpu().tolist()
+            completion = self.tokenizer.decode(decoded_ids, skip_special_tokens=True)
+            completion = completion.replace(prompt, "").strip()
+            completion = normalize_text(completion)
+            if completion:
+                candidates.append(completion)
+
+        if not candidates:
+            return "I need a bit more context to answer that well."
+
+        ranked = sorted(candidates, key=lambda item: self._score_completion(prompt, item), reverse=True)
+        return ranked[0]
     
     def chat(self):
         """Interactive chat loop"""

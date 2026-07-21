@@ -14,8 +14,11 @@ TOOLS = [
     ("3", "staged_training_cycle.py", "Run staged training cycle"),
     ("4", "train_from_chatgpt_json.py", "Train from ChatGPT export"),
     ("5", "build_synthetic_curriculum.py", "Build synthetic curriculum"),
-    ("6", "verify_setup.py", "Verify setup"),
-    ("7", "validate_question_banks.py", "Validate question bank files"),
+    ("6", "build_local_instruction_dataset.py", "Build local instruction dataset"),
+    ("7", "verify_setup.py", "Verify setup"),
+    ("8", "validate_question_banks.py", "Validate question bank files"),
+    ("9", "upgrade_model.py", "Promote checkpoint / activate model"),
+    ("10", "local_growth_cycle.py", "Run local growth cycle"),
 ]
 
 
@@ -78,32 +81,73 @@ def run_tools_menu():
         args = []
         if script_name == "train_from_chatgpt_json.py":
             args = ["--data-folder", "..\\ChatGPT data 2024-26"]
+        elif script_name == "upgrade_model.py":
+            model_name = input("Model name to register: ").strip()
+            if not model_name:
+                print("Model name is required.")
+                continue
+            notes = input("Short notes (optional): ").strip()
+            activate = input("Activate this checkpoint now? (y/n): ").strip().lower() in {"y", "yes"}
+            args = ["--name", model_name]
+            if notes:
+                args.extend(["--notes", notes])
+            if activate:
+                args.append("--activate")
         run_script(script_name, args)
+
+
+def is_interactive_session():
+    try:
+        return sys.stdin.isatty() and sys.stdout.isatty()
+    except Exception:
+        return False
 
 
 def main():
     project_dir = Path(__file__).parent
     os.chdir(project_dir)
 
+    if not is_interactive_session():
+        print("Non-interactive launch detected. Opening the JARVIS window instead of waiting for menu input.")
+        run_script("jarvis_gui.py")
+        return
+
     while True:
         print("\n" + "=" * 58)
         print("JARVIS Launcher")
         print("=" * 58)
-        print("  1. Start JARVIS conversation (recommended)")
-        print("  2. Start self-learning chat")
-        print("  3. Start unattended learning daemon")
-        print("  4. Training/eval tools")
+        print("  1. Open JARVIS window (local-only, memory + lookup)")
+        print("  2. Start local-only JARVIS in terminal")
+        print("  3. Start self-learning chat")
+        print("  4. Start unattended learning daemon")
+        print("  5. Run local growth cycle")
+        print("  6. Build local instruction dataset")
+        print("  7. Training/eval tools")
+        print("  8. Rebuild local memory from the instruction dataset")
         print("  0. Exit")
 
-        choice = input("Choose an option: ").strip().lower()
+        try:
+            choice = input("Choose an option: ").strip().lower()
+        except EOFError:
+            print("\nNo terminal input detected. Opening the JARVIS window instead.\n")
+            run_script("jarvis_gui.py")
+            return
         if choice in {"", "1", "jarvis", "chat"}:
-            run_script("jarvis_ai.py")
-        elif choice in {"2", "self", "self-learning"}:
+            run_script("jarvis_gui.py")
+        elif choice in {"2", "local", "local-only"}:
+            run_script("jarvis_ai.py", ["--local-only"])
+        elif choice in {"3", "self", "self-learning"}:
             run_script("chat_self_learning.py")
-        elif choice in {"3", "autopilot", "daemon", "auto"}:
+        elif choice in {"4", "autopilot", "daemon", "auto"}:
             run_script("autopilot_daemon.py")
-        elif choice in {"4", "tools", "train", "eval"}:
+        elif choice in {"5", "growth", "grow"}:
+            run_script("local_growth_cycle.py")
+        elif choice in {"6", "instruction", "dataset"}:
+            run_script("build_local_instruction_dataset.py")
+        elif choice in {"7", "tools", "train", "eval"}:
             run_tools_menu()
+        elif choice in {"8", "memory", "refresh", "rebuild"}:
+            run_script("build_local_instruction_dataset.py")
         elif choice in {"0", "exit", "quit"}:
             print("Goodbye.")
             return

@@ -13,6 +13,7 @@ from pathlib import Path
 
 import fine_tune_utils
 from inference import LLMChat
+from model_paths import resolve_active_checkpoint
 from quality_utils import content_hash, is_high_signal_text, normalize_text, text_quality_score
 
 
@@ -100,7 +101,7 @@ def train_shard(chat, shard_text, checkpoint_path, steps, learning_rate, min_imp
 def main():
     parser = argparse.ArgumentParser(description="Large-scale corpus training with max byte budget")
     parser.add_argument("--data-root", required=True, help="Root folder containing training files")
-    parser.add_argument("--checkpoint", default="checkpoints/best_model.pt", help="Checkpoint path")
+    parser.add_argument("--checkpoint", default=resolve_active_checkpoint(), help="Checkpoint path")
     parser.add_argument("--max-gb", type=float, default=250.0, help="Maximum data budget in GB")
     parser.add_argument("--shard-max-chars", type=int, default=1200000, help="Chars per training shard")
     parser.add_argument("--steps", type=int, default=10, help="Fine-tuning steps per shard")

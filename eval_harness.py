@@ -94,42 +94,71 @@ class EvalHarness:
         weighted = 0.0
         max_weight = 0.0
 
-        for case in cases:
-            ctype = case.get("type")
-            text_out = ""
-            if ctype == "chat":
-                text_out = self.jarvis.generate_response(case["input"])
-            elif ctype == "executor":
-                text_out = self.jarvis.execute_task_request(case["input"])
-            elif ctype == "skill":
-                text_out = self.jarvis._run_skill(case.get("skill", "planner"), case["input"], "")
-            else:
-                text_out = "unsupported_case_type"
+        original_turns = None
+        mem_ref = None
+        if hasattr(self.jarvis, "memory") and hasattr(self.jarvis.memory, "memory"):
+            mem_ref = self.jarvis.memory.memory
+            try:
+                original_turns = list(mem_ref)
+                mem_ref.clear()
+            except Exception:
+                original_turns = None
 
-            if case.get("scorer") == "safety":
-                score = self._score_safety_block(text_out)
-            else:
-                term_score = self._score_contains(text_out, case.get("required_terms", []))
-                if ctype == "chat" and case.get("require_confidence", True):
-                    format_score = self._score_confidence_format(text_out)
+        if hasattr(self.jarvis, "stop_autolearn"):
+            try:
+                self.jarvis.stop_autolearn()
+            except Exception:
+                pass
+        if hasattr(self.jarvis, "stop_proactive_mode"):
+            try:
+                self.jarvis.stop_proactive_mode()
+            except Exception:
+                pass
+
+        try:
+            for case in cases:
+                ctype = case.get("type")
+                text_out = ""
+                if ctype == "chat":
+                    text_out = self.jarvis.generate_response(case["input"])
+                elif ctype == "executor":
+                    text_out = self.jarvis.execute_task_request(case["input"])
+                elif ctype == "skill":
+                    text_out = self.jarvis._run_skill(case.get("skill", "planner"), case["input"], "")
                 else:
-                    format_score = 1.0
-                forbidden_score = self._score_forbidden_terms(text_out, case.get("forbidden_terms", []))
-                score = 0.6 * term_score + 0.2 * format_score + 0.2 * forbidden_score
+                    text_out = "unsupported_case_type"
 
-            weight = float(case.get("weight", 1.0))
-            weighted += score * weight
-            max_weight += weight
+                if case.get("scorer") == "safety":
+                    score = self._score_safety_block(text_out)
+                else:
+                    term_score = self._score_contains(text_out, case.get("required_terms", []))
+                    if ctype == "chat" and case.get("require_confidence", True):
+                        format_score = self._score_confidence_format(text_out)
+                    else:
+                        format_score = 1.0
+                    forbidden_score = self._score_forbidden_terms(text_out, case.get("forbidden_terms", []))
+                    score = 0.6 * term_score + 0.2 * format_score + 0.2 * forbidden_score
 
-            rows.append(
-                {
-                    "id": case.get("id"),
-                    "type": ctype,
-                    "score": round(score, 4),
-                    "weight": weight,
-                    "output_preview": re.sub(r"\s+", " ", (text_out or ""))[:260],
-                }
-            )
+                weight = float(case.get("weight", 1.0))
+                weighted += score * weight
+                max_weight += weight
+
+                rows.append(
+                    {
+                        "id": case.get("id"),
+                        "type": ctype,
+                        "score": round(score, 4),
+                        "weight": weight,
+                        "output_preview": re.sub(r"\s+", " ", (text_out or ""))[:260],
+                    }
+                )
+        finally:
+            if mem_ref is not None and original_turns is not None:
+                try:
+                    mem_ref.clear()
+                    mem_ref.extend(original_turns)
+                except Exception:
+                    pass
 
         final = 100.0 * (weighted / max(max_weight, 1e-9))
         result = {

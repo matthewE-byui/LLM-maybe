@@ -65,7 +65,7 @@ def lexical_overlap_score(query, text):
 
 def source_weight(source):
     src = (source or "").lower()
-    if src in {"bootstrap", "reward_positive", "reflection"}:
+    if src in {"bootstrap", "reward_positive", "reflection", "curated_core", "curated_knowledge", "project_file", "instruction_dataset", "question_bank"}:
         return 1.1
     if src in {"local_ingest", "web_lookup", "lookup", "fallback_lookup"}:
         return 1.0

@@ -9,6 +9,7 @@ from fine_tune_utils import fine_tune_on_text
 from transformers import AutoTokenizer
 from model import TransformerLM
 from config import MODEL_CONFIG
+from quality_utils import normalize_text, text_quality_score, lexical_overlap_score
 
 
 class SelfLearningAI:
@@ -55,6 +56,24 @@ class SelfLearningAI:
         
         self.load_learning_stats()
         self._print_welcome()
+
+    def _assistant_prefix(self):
+        return (
+            "You are a helpful, accurate assistant. "
+            "Answer directly, stay concise, and do not repeat the prompt. "
+            "If the prompt is ambiguous, ask one focused clarifying question instead of guessing.\n\n"
+        )
+
+    def _score_completion(self, prompt, completion):
+        text = normalize_text(completion)
+        if not text:
+            return 0.0
+        score = text_quality_score(text)
+        score += 0.25 * min(1.0, len(text) / 220.0)
+        score += 0.25 * lexical_overlap_score(prompt, text)
+        if len(text.split()) < 6:
+            score *= 0.7
+        return max(0.0, min(1.0, score))
     
     def _print_welcome(self):
         """Print welcome message with learning status"""
@@ -192,6 +211,8 @@ Topics to learn: {len(self.learn_topics)}
         if self.knowledge_bank:
             context = " ".join(self.knowledge_bank[-2:])[:300]
             prompt = f"Context: {context}\n\nUser: {prompt}"
+
+        prompt = self._assistant_prefix() + prompt
         
         encoding = self.tokenizer(prompt, return_tensors=None)
         input_ids = torch.tensor(encoding["input_ids"], dtype=torch.long)
@@ -200,13 +221,24 @@ Topics to learn: {len(self.learn_topics)}
             input_ids = input_ids.unsqueeze(0)
         input_ids = input_ids.to(self.device)
         
-        with torch.no_grad():
-            output_ids = self.model.generate(
-                input_ids,
-                max_new_tokens=max_length,
-                temperature=temperature,
-                top_k=top_k
-            )
-        
-        decoded = self.tokenizer.decode(output_ids[0].cpu().tolist(), skip_special_tokens=True)
-        return decoded
+        candidates = []
+        for candidate_temperature in (max(0.2, temperature * 0.85), temperature, min(0.95, temperature * 1.1)):
+            with torch.no_grad():
+                output_ids = self.model.generate(
+                    input_ids,
+                    max_new_tokens=max_length,
+                    temperature=candidate_temperature,
+                    top_k=top_k
+                )
+
+            decoded = self.tokenizer.decode(output_ids[0].cpu().tolist(), skip_special_tokens=True)
+            decoded = decoded.replace(prompt, "").strip()
+            decoded = normalize_text(decoded)
+            if decoded:
+                candidates.append(decoded)
+
+        if not candidates:
+            return "I need a bit more context to answer that well."
+
+        ranked = sorted(candidates, key=lambda item: self._score_completion(prompt, item), reverse=True)
+        return ranked[0]

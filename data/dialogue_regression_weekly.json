@@ -1,84 +1,5 @@
 [
   {
-    "id": "gradient_descent_explanation",
-    "turns": [
-      {
-        "user": "explain gradient descent simply",
-        "required_terms": [
-          "gradient",
-          "descent"
-        ],
-        "forbidden_terms": [
-          "www",
-          "http"
-        ]
-      },
-      {
-        "user": "give me a simple example",
-        "required_terms": [
-          "example"
-        ],
-        "forbidden_terms": [
-          "www",
-          "http"
-        ]
-      }
-    ]
-  },
-  {
-    "id": "python_beginner_path",
-    "turns": [
-      {
-        "user": "i want to learn python where should i start",
-        "required_terms": [
-          "python",
-          "basics"
-        ],
-        "forbidden_terms": [
-          "www",
-          "http",
-          "implementation path"
-        ]
-      },
-      {
-        "user": "what should i build first",
-        "required_terms": [
-          "project"
-        ],
-        "forbidden_terms": [
-          "www",
-          "http"
-        ]
-      }
-    ]
-  },
-  {
-    "id": "transformer_basics",
-    "turns": [
-      {
-        "user": "what is a transformer in ai",
-        "required_terms": [
-          "transformer",
-          "attention"
-        ],
-        "forbidden_terms": [
-          "www",
-          "http"
-        ]
-      },
-      {
-        "user": "why is attention useful",
-        "required_terms": [
-          "attention"
-        ],
-        "forbidden_terms": [
-          "www",
-          "http"
-        ]
-      }
-    ]
-  },
-  {
     "id": "overfitting_fix_path",
     "turns": [
       {
@@ -317,6 +238,93 @@
   },
   {
     "id": "weekly_followup_010",
+    "turns": [
+      {
+        "user": "what should i build next",
+        "required_terms": [
+          "after",
+          "bank"
+        ],
+        "forbidden_terms": [
+          "www",
+          "http"
+        ]
+      },
+      {
+        "user": "how long should that take",
+        "required_terms": [
+          "build",
+          "after",
+          "bank",
+          "confidence"
+        ],
+        "forbidden_terms": [
+          "www",
+          "http"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "weekly_followup_001",
+    "turns": [
+      {
+        "user": "explain gradient descent simply",
+        "required_terms": [
+          "descent",
+          "gradient"
+        ],
+        "forbidden_terms": [
+          "www",
+          "http"
+        ]
+      },
+      {
+        "user": "how do i choose a learning rate",
+        "required_terms": [
+          "descent",
+          "gradient",
+          "small",
+          "confidence"
+        ],
+        "forbidden_terms": [
+          "www",
+          "http"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "weekly_followup_009",
+    "turns": [
+      {
+        "user": "explain gradient descent simply",
+        "required_terms": [
+          "descent",
+          "gradient"
+        ],
+        "forbidden_terms": [
+          "www",
+          "http"
+        ]
+      },
+      {
+        "user": "how do i choose a learning rate",
+        "required_terms": [
+          "descent",
+          "gradient",
+          "small",
+          "confidence"
+        ],
+        "forbidden_terms": [
+          "www",
+          "http"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "weekly_followup_011",
     "turns": [
       {
         "user": "what should i build next",

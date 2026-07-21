@@ -1,0 +1,2 @@
+{"timestamp": "2026-07-08T16:48:21.429697", "sentiment": "negative", "user": "what is a boat", "assistant": "what is retrieval augmented generation Confidence: low (0.285) | Citations: [1:embed:question_bank] I am only partially certain. Do you want me to run a deeper lookup before finalizing?", "note": "penalized by user"}
+{"timestamp": "2026-07-08T20:07:27.757730", "sentiment": "positive", "user": "yes", "assistant": "Understood. I reinforced the previous answer locally.", "note": "rewarded by user"}

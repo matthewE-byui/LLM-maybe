@@ -1,17 +1,21 @@
 """Run multi-turn dialogue regression cases against JARVIS."""
 
+import argparse
 import json
 import os
 import re
 from datetime import datetime
 
 from jarvis_ai import JARVIS
+from model_paths import resolve_active_checkpoint
 
 
 class DialogueRegression:
-    def __init__(self, cases_path="data/dialogue_regression_cases.json", out_dir="eval_reports"):
+    def __init__(self, cases_path="data/dialogue_regression_cases.json", out_dir="eval_reports", local_only=True, checkpoint_path=None):
         self.cases_path = cases_path
         self.out_dir = out_dir
+        self.local_only = local_only
+        self.checkpoint_path = checkpoint_path or resolve_active_checkpoint()
         os.makedirs(self.out_dir, exist_ok=True)
 
     def load_cases(self):
@@ -40,7 +44,7 @@ class DialogueRegression:
 
     def run(self):
         cases = self.load_cases()
-        jarvis = JARVIS()
+        jarvis = JARVIS(local_only=self.local_only, checkpoint_path=self.checkpoint_path)
         jarvis.stop_autolearn()
         jarvis.stop_proactive_mode()
 
@@ -97,7 +101,12 @@ class DialogueRegression:
 
 
 def main():
-    result = DialogueRegression().run()
+    parser = argparse.ArgumentParser(description="Run dialogue regression against JARVIS")
+    parser.add_argument("--checkpoint", default=resolve_active_checkpoint(), help="Local checkpoint to load")
+    parser.add_argument("--no-local-only", action="store_true", help="Allow non-local runtime behavior")
+    args = parser.parse_args()
+
+    result = DialogueRegression(local_only=not args.no_local_only, checkpoint_path=args.checkpoint).run()
     print("=" * 60)
     print("Dialogue Regression Complete")
     print("=" * 60)

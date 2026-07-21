@@ -117,6 +117,16 @@ You: exit
 Goodbye!
 ```
 
+### Local-only JARVIS mode
+
+If you want the assistant to stay fully on this PC and not use web lookup or browser-based search, start it in local-only mode:
+
+```bash
+python jarvis_ai.py --local-only
+```
+
+You can also open the launcher and choose the local-only JARVIS option.
+
 ## Configuration
 
 Edit `config.py` to customize:

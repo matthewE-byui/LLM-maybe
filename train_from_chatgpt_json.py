@@ -8,6 +8,7 @@ from pathlib import Path
 
 import fine_tune_utils
 from inference import LLMChat
+from model_paths import resolve_active_checkpoint
 
 
 NOISY_KEYS = {
@@ -100,7 +101,7 @@ def build_corpus_from_folder(folder_path, max_chars=1_200_000):
 def main():
     parser = argparse.ArgumentParser(description="Train checkpoint from ChatGPT JSON export")
     parser.add_argument("--data-folder", required=True, help="Path to ChatGPT data folder")
-    parser.add_argument("--checkpoint", default="checkpoints/best_model.pt", help="Checkpoint path")
+    parser.add_argument("--checkpoint", default=resolve_active_checkpoint(), help="Checkpoint path")
     parser.add_argument("--steps", type=int, default=14, help="Fine-tuning steps")
     parser.add_argument("--max-chars", type=int, default=1200000, help="Max corpus chars")
     args = parser.parse_args()

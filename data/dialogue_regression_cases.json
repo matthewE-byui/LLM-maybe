@@ -371,5 +371,92 @@
         ]
       }
     ]
+  },
+  {
+    "id": "weekly_followup_001",
+    "turns": [
+      {
+        "user": "explain gradient descent simply",
+        "required_terms": [
+          "descent",
+          "gradient"
+        ],
+        "forbidden_terms": [
+          "www",
+          "http"
+        ]
+      },
+      {
+        "user": "how do i choose a learning rate",
+        "required_terms": [
+          "descent",
+          "gradient",
+          "small",
+          "confidence"
+        ],
+        "forbidden_terms": [
+          "www",
+          "http"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "weekly_followup_009",
+    "turns": [
+      {
+        "user": "explain gradient descent simply",
+        "required_terms": [
+          "descent",
+          "gradient"
+        ],
+        "forbidden_terms": [
+          "www",
+          "http"
+        ]
+      },
+      {
+        "user": "how do i choose a learning rate",
+        "required_terms": [
+          "descent",
+          "gradient",
+          "small",
+          "confidence"
+        ],
+        "forbidden_terms": [
+          "www",
+          "http"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "weekly_followup_011",
+    "turns": [
+      {
+        "user": "what should i build next",
+        "required_terms": [
+          "after",
+          "bank"
+        ],
+        "forbidden_terms": [
+          "www",
+          "http"
+        ]
+      },
+      {
+        "user": "how long should that take",
+        "required_terms": [
+          "build",
+          "after",
+          "bank",
+          "confidence"
+        ],
+        "forbidden_terms": [
+          "www",
+          "http"
+        ]
+      }
+    ]
   }
 ]
