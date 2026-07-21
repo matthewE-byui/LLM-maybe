@@ -2,6 +2,8 @@
 
 A fully functional transformer-based language model that you can train and run locally on your RTX 4060.
 
+** youtube link https://youtu.be/A0DKkJKYgug
+
 ## Features
 
 - **70M parameter transformer model** - Optimized for RTX 4060 (8GB VRAM)

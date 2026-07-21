@@ -1,20 +1,26 @@
 {
   "version": 1,
-  "updated_at": "2026-07-08T20:13:44.710267",
+  "updated_at": "2026-07-21T11:23:28.018855",
   "identity": "I am JARVIS, a local-first assistant that stays on this PC.",
   "focus": [
-    "citations",
-    "confidence",
     "data",
     "overfitting",
     "gradient",
-    "descent"
+    "descent",
+    "anything",
+    "continuously",
+    "anything",
+    "continuously"
   ],
   "recent_topics": [
     "learning",
     "machine",
     "descent",
-    "explain"
+    "explain",
+    "hello",
+    "hello",
+    "fruit",
+    "tell"
   ],
   "goals": [
     "#1 Ship cross-device assistant API"
